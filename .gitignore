@@ -1,0 +1,20 @@
+
+# Ignore logs and cache
+*.log
+*.cache
+*.tmp
+
+# Ignore environment and configuration files
+.venv
+.env
+
+
+
+# Ignore IDE/editor-specific files
+.idea/
+.vscode/
+*.swp
+
+
+# Ignore unnecessary files
+structure.txt

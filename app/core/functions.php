@@ -12,3 +12,9 @@ function sanitize($dirty_code)
 {
     return htmlspecialchars($dirty_code);
 }
+
+function redirect($link)
+{
+    header("Location: " .ROOT ."/" . $link);
+    die;
+}

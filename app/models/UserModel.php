@@ -18,7 +18,25 @@ class UserModel extends Model
     {
         $this->table = 'Users';
         $this->order_column = 'user_id';
-    
+
+    }
+
+    public function validate($data)
+    {
+        $this->errors = [];
+
+        if(empty($data['username']))
+        {
+            $this->errors['username'] = "Username is required";
+        }//more  validation logic goes here!!
+
+
+
+        if(empty($this->errors))
+        {
+            return true;
+        }
+        return false;
     }
 
 

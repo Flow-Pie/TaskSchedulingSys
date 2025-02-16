@@ -11,24 +11,33 @@ class UserController extends Controller
 
     public function index ($a ='hello', $b = '', $c = '')
     {
-        $user = new UserController();
 
-        $arr['username']='john Wambui';
-        $arr['password']='123456';
-        $arr['email']='johnwam@gmail.com';
-        $arr['first_name']='john';
-        $arr['last_name']='wambui';
-        $arr['role']='admin';
-        $arr['date_registered']='2022-02-19';
+        // $arr['username']='john Wambui';
+        // $arr['password']='123456';
+        // $arr['email']='johnwam@gmail.com';
+        // $arr['first_name']='john';
+        // $arr['last_name']='wambui';
+        // $arr['role']='admin';
+        // $arr['date_registered']='2022-02-19';
 
-        //$res = $user->insert($arr);
-        $res = $this->model->where(['user_id'=>1]);
+        // //$res = $user->insert($arr);
+        // $res = $this->model->where(['user_id'=>1]);
 
-        show($a);
-        show($b);
-        show($c);
+        // show($a);
+        // show($b);
+        // show($c);
 
-        show($res);
+        // show($res);
+
+
+        if($this->model->validate($_POST))
+        {
+            $this->model->insert($_POST);
+        }
+        else
+        {
+            $errors = $this->model->errors;
+        }
 
 
 

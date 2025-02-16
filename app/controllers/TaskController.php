@@ -13,10 +13,10 @@ class TaskController extends Controller
     {
 
         //eg how to view task by id
-        $res = $this->model->where(['user_id' => 1]);
-        show($res);
-        
-        echo " This is the Task Controller <br>";
+        //$res = $this->model->where(['user_id' => 1]);
+        //show($res);
+
+       // echo " This is the Task Controller <br>";
         $this->view("task");
     }
 

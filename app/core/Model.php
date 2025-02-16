@@ -11,6 +11,7 @@ class Model extends Database
     protected $order_type = "DESC";
     protected $order_column = "task_id";
     protected $allowedColumns = [];
+    public $errors = [];
 
 
     function test()
