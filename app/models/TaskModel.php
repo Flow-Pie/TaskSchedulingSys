@@ -13,9 +13,8 @@ class TaskModel extends Model
     ];
 
 
-    function __construct()
+    public function __construct()
     {
         $this->table = 'Tasks';
-        $this->order_column = 'task_date';
     }
 }

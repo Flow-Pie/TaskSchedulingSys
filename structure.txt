@@ -2,7 +2,6 @@
 ├── app
 │   ├── controllers
 │   │   ├── _404.php
-│   │   ├── controller.md
 │   │   ├── TaskController.php
 │   │   └── UserController.php
 │   ├── core
@@ -12,25 +11,18 @@
 │   │   ├── functions.php
 │   │   ├── init.php
 │   │   ├── Model.php
-│   │   ├── ResponseHelper.php
-│   │   ├── Router.php
 │   │   └── TaskApp.php
-│   └── models
-│       ├── TaskModel.php
-│       └── UserModel.php
-├── frontend
-│   ├── index.php
-│   ├── js
-│   │   ├── app.js
-│   │   └── tasks.js
+│   ├── models
+│   │   ├── TaskModel.php
+│   │   └── UserModel.php
+│   ├── route
+│   │   └── api.php
 │   └── views
-│       ├── tasks.php
-│       └── users.php
+│       ├── _404.view.php
+│       ├── dashboard.view.php
+│       └── task.view.php
+├── LICENSE
 ├── public
-│   ├── api
-│   │   ├── index.php
-│   │   ├── tasks.php
-│   │   └── users.php
 │   ├── assets
 │   │   ├── images
 │   │   │   ├── bar-chart.png
@@ -38,10 +30,12 @@
 │   │   │   ├── dashboard.png
 │   │   │   ├── man.png
 │   │   │   └── signature.png
+│   │   ├── js
+│   │   │   └── index.js
 │   │   └── styles
 │   │       └── styles.css
 │   ├── index.php
 │   └── robots.txt
 └── structure.txt
 
-13 directories, 32 files
+12 directories, 27 files

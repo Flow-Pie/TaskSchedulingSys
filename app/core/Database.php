@@ -18,7 +18,7 @@ class Database{
             return false;
         }
 
-        
+
         if (stripos($query, 'INSERT') === 0) {
             return [
                 "status" => "success",
@@ -45,7 +45,7 @@ class Database{
 
         $check = $stm->execute($data);
         if ($check) {
-            $result = $stm->fetchAll(PDO::FETCH_ASSOC); //pass in PDO::FETCH_ASSOC if you prefer working with arrays
+            $result = $stm->fetchAll(PDO::FETCH_OBJ); //pass in PDO::FETCH_ASSOC if you prefer working with arrays
 
             if (is_array($result) && count($result)) {
                 return $result[0];
