@@ -9,3 +9,6 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DBPASS', '');
 }
 
+define('DEBUG', true);
+define('APPNAME', 'Task Scheduling System');
+define('APPVERSION', '1.0.0');
