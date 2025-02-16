@@ -14,17 +14,28 @@ class Database{
         $stm = $con->prepare($query);
         $check = $stm->execute($data);
 
-        if (strpos(strtoupper($query), 'INSERT') !== false) {
-            return $con->lastInsertId(); // Return the last inserted ID
+        if (!$check) {
+            return false;
         }
 
-        if ($check) {
-            $result = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return $result ?: true; // Return true if no results but successful
+        
+        if (stripos($query, 'INSERT') === 0) {
+            return [
+                "status" => "success",
+                "last_insert_id" => $con->lastInsertId()
+            ];
         }
 
-        return false;
+        if (stripos($query, 'UPDATE') === 0 || stripos($query, 'DELETE') === 0) {
+            return [
+                "status" => "success",
+                "affected_rows" => $stm->rowCount()
+            ];
+        }
+
+        return $stm->fetchAll(PDO::FETCH_OBJ) ?: true;
     }
+
 
 
     public function get_first_row($query, $data = [])
