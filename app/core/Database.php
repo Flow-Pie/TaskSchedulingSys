@@ -4,7 +4,6 @@ class Database{
     {
         $connString = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
         $con = new PDO($connString, DBUSER, DBPASS);
-        echo "DB Connected successfully";
         return $con;
     }
 

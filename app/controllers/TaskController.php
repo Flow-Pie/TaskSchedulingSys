@@ -26,7 +26,7 @@ class TaskController extends Controller
         echo json_encode($tasks);
     }
 
-    public function createTask($data)
+    public function addNewTask($data)
     {
         $taskId = $this->model->insert($data);
         echo json_encode(["success" => true, "task_id" => $taskId]);
@@ -34,13 +34,18 @@ class TaskController extends Controller
 
     public function updateTask($id, $data)
     {
-        $updated = $this->model->update(['task_id' => $id], $data);
+        if (is_array($id)) {
+            die("Error: task_id should not be an array!");
+        }
+
+        $updated = $this->model->update($id, $data);
         echo json_encode(["success" => $updated]);
     }
 
+
     public function deleteTask($id)
     {
-        $deleted = $this->model->delete(['task_id' => $id]);
+        $deleted = $this->model->delete($id);
         echo json_encode(["success" => $deleted]);
     }
 
@@ -57,6 +62,13 @@ class TaskController extends Controller
         error_log("Sorting by: " . $column . " " . $order);
 
         echo json_encode($res);
+    }
+
+    public function getAll()
+    {
+        $tasks = $this->model->getAll();
+        echo json_encode($tasks);
+
     }
 
 

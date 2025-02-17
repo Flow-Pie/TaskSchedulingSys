@@ -8,7 +8,6 @@ class Model extends Database
     protected $offset = 0;
     protected $order_type = "DESC";
     protected $order_column = "task_id";
-    protected $allowedColumns = [];
 
     // Getters
     public function getOrderColumn()
@@ -41,13 +40,6 @@ class Model extends Database
         return $this;
     }
 
-    // Test Query
-    public function test()
-    {
-        $query = "SELECT * FROM $this->table";
-        $result = $this->query($query);
-        show($result);
-    }
 
     // WHERE Condition Query
     public function where($data, $data_not = [])
@@ -95,9 +87,6 @@ class Model extends Database
     // Insert Data
     public function insert($data)
     {
-        if (!empty($this->allowedColumns)) {
-            $data = array_filter($data, fn($key) => in_array($key, $this->allowedColumns), ARRAY_FILTER_USE_KEY);
-        }
 
         $keys = array_keys($data);
         $query = "INSERT INTO `{$this->table}` (" . implode(", ", $keys) . ") VALUES (:" . implode(", :", $keys) . ")";
@@ -106,26 +95,29 @@ class Model extends Database
     }
 
     // Update Data
-    public function update($id, $data, $id_column = "id")
+    public function update($id, $data, $id_column = "task_id")
     {
-        if (!empty($this->allowedColumns)) {
-            $data = array_filter($data, fn($key) => in_array($key, $this->allowedColumns), ARRAY_FILTER_USE_KEY);
-        }
+        print_r($data);
+        echo "<br>";
 
         $keys = array_keys($data);
         $data[$id_column] = $id;
+
         $query = "UPDATE $this->table SET " . implode(", ", array_map(fn($key) => "$key = :$key", $keys));
         $query .= " WHERE $id_column = :$id_column";
 
+        echo $query;
         return $this->query($query, $data);
     }
 
+
     // Delete Data
-    public function delete($id, $id_column = "id")
+    public function delete($id, $id_column = "task_id")
     {
-        $data = [$id_column => $id]; // FIXED: Initialize array
+        $data = [$id_column => $id];
         $query = "DELETE FROM $this->table WHERE $id_column = :$id_column";
 
+        echo $query;
         return $this->query($query, $data);
     }
 

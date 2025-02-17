@@ -10,14 +10,16 @@ if(DEBUG) {
 }
 
 
+
 $app = new TaskApp();
 
 try{
+
     $app->loadController();//load the controller from the core folder TaskApp class
 
 }catch(Exception $e){
     echo $e->getMessage();
 }
 
-
+?>
 
